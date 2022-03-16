@@ -22,7 +22,18 @@ for i in test:
 new_file = 'new_file'
 old_file = 'old_file'
 
-#Check if file content updated
-new_hash = hashlib.md5(new_file.encode()).hexdigest()
-old_hash = hashlib.md5(old_file.encode()).hexdigest()
+
 def filechk(new_file, old_file):
+
+    #open new file & old file
+    new_file_0 = open(new_file, 'r', encoding='utf-8').read()
+    old_file_0 = open(old_file, 'r', encoding='utf-8').read()
+
+    #generate hashes for new & old files
+    new_hash = hashlib.md5(new_file_0.encode()).hexdigest()
+    old_hash = hashlib.md5(old_file_0.encode()).hexdigest()
+
+    if new_hash == old_hash:
+        return True
+    else:
+        return False
